@@ -95,6 +95,7 @@ class ClientApplication extends JFrame {
 		fwe.close();
 		
 		Socket client=new Socket("localhost",6666);
+		System.out.println("To Brooklyn...");
 		FileReader fr = new FileReader("sample.txt");
 		BufferedReader br = new BufferedReader(fr);
 		

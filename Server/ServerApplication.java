@@ -23,7 +23,7 @@ class ServerApplication {
 	 
   String clientSentence;
   String capitalizedSentence;
-  ServerSocket welcomeSocket = new ServerSocket(6666);
+  ServerSocket welcomeSocket = new ServerSocket(7878);
 
   while (true) {
    Socket connectionSocket = welcomeSocket.accept();
@@ -83,7 +83,7 @@ class ServerApplication {
 			JFrame frame = new JFrame("ApMSaM");
 			frame.setSize(400, 100);
 			JLabel label = new JLabel("Password");
-			JLabel label21 = new JLabel("5secs\n");
+			JLabel label21 = new JLabel("10secs\n");
 			JTextField tf = new JTextField(4); 
 			JButton send = new JButton("OK");
 			
@@ -113,7 +113,7 @@ class ServerApplication {
 	  }	
 			});
 			
-			Thread.sleep(5000);
+			Thread.sleep(10000);
 			
 			BufferedReader reader = new BufferedReader(new FileReader("Passwd.txt"));
 			String pass=reader.readLine();
