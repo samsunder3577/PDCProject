@@ -46,10 +46,33 @@ class ServerApplication {
         }
         build+=" ";
     }
+	
+	
+	String newS = ""; 
+  int k=28;
+        // iterate for every characters  
+        for (int i = 0; i < clientSentence.length(); ++i) { 
+            // ASCII value  
+            int val = clientSentence.charAt(i); 
+            // store the duplicate  
+            int dup = k; 
+  
+            // if k-th ahead character exceed 'z'  
+            if (val + k > 122) { 
+                k -= (122 - val); 
+                k = k % 26; 
+                  
+                newS += (char)(96 + k); 
+            } else { 
+                newS += (char)(val + k); 
+            } 
+  
+            k = dup; 
+		}
 	//System.out.println(build);
 	FileWriter fw = new FileWriter("output.txt", false);
 	//while ((s = br.readLine()) != null) { 
-				fw.write(clientSentence); 
+				fw.write(newS); 
 				fw.flush();
 				//outToServer.writeBytes(s);
 			//}
@@ -60,8 +83,12 @@ class ServerApplication {
 			JFrame frame = new JFrame("ApMSaM");
 			frame.setSize(400, 100);
 			JLabel label = new JLabel("Password");
+			JLabel label21 = new JLabel("5secs\n");
 			JTextField tf = new JTextField(4); 
 			JButton send = new JButton("OK");
+			
+			panel.add(label21);
+			panel.add(label);
 			panel.add(tf);
 			panel.add(send);
 			frame.getContentPane().add(BorderLayout.SOUTH, panel);
@@ -73,7 +100,7 @@ class ServerApplication {
 				public void actionPerformed(ActionEvent e)
       {try
 	  {
-		  BufferedWriter bw=new BufferedWriter(new FileWriter("Passwd.txt"));
+		BufferedWriter bw=new BufferedWriter(new FileWriter("Passwd.txt"));
 		bw.write(tf.getText());
 		bw.close(); 
 	  }
@@ -133,8 +160,9 @@ timer.start();
 
 dialog.setVisible(true);
            			 
-			Files.delete(Paths.get("passwd.txt"));
 			Files.delete(Paths.get("output.txt"));
+			Files.delete(Paths.get("passwd.txt"));
+			
 			}
 			else 
 			{
