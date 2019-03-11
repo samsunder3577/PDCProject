@@ -15,35 +15,20 @@ class ClientApplication extends JFrame {
         frame.setSize(800, 100);
 
         
-        //JMenuBar mb = new JMenuBar();
-       // JMenu m1 = new JMenu("FILE");
-       // JMenu m2 = new JMenu("Help");
-        //mb.add(m1);
-       // mb.add(m2);
-       // JMenuItem m11 = new JMenuItem("Open");
-        //JMenuItem m22 = new JMenuItem("Save as");
-        //m1.add(m11);
-        //m1.add(m22);
-
-        
         JPanel panel = new JPanel(); 
         JLabel label = new JLabel("Enter Text");
         JTextField tf = new JTextField(50); 
         JButton send = new JButton("Send");
-        //JButton reset = new JButton("Reset");
+        
         panel.add(label); 
         panel.add(label); 
         panel.add(tf);
         panel.add(send);
-        //panel.add(reset);
-
         
-        //JTextArea ta = new JTextArea();
 
        
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
-       // frame.getContentPane().add(BorderLayout.NORTH, mb);
-        //frame.getContentPane().add(BorderLayout.CENTER, ta);
+       
         frame.setVisible(true);
 		 
 	send.addActionListener(new ActionListener()
@@ -100,14 +85,13 @@ class ClientApplication extends JFrame {
 		BufferedReader br = new BufferedReader(fr);
 		
 		DataOutputStream outToServer = new DataOutputStream(client.getOutputStream());
-		//FileWriter fw = new FileWriter("output.txt", true);
+		
 		String s;
 		
 		while ((s = br.readLine()) != null) { 
-				//fw.write(s); 
-				//fw.flush();
+				
 				outToServer.writeBytes(s);
-				//ystem.out.println("Sending");
+				
 			}
 			br.close();
 			client.close();

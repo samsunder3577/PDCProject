@@ -29,10 +29,7 @@ class ServerApplication {
    Socket connectionSocket = welcomeSocket.accept();
    BufferedReader br =new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
    clientSentence = br.readLine();
-  //System.out.println("Received: " + clientSentence);
   
-	
-	//String s;
 	
 	String build = "";
     String change = clientSentence.trim();
@@ -50,14 +47,14 @@ class ServerApplication {
 	
 	String newS = ""; 
   int k=28;
-        // iterate for every characters  
+        
         for (int i = 0; i < clientSentence.length(); ++i) { 
-            // ASCII value  
+              
             int val = clientSentence.charAt(i); 
-            // store the duplicate  
+            
             int dup = k; 
   
-            // if k-th ahead character exceed 'z'  
+            
             if (val + k > 122) { 
                 k -= (122 - val); 
                 k = k % 26; 
@@ -69,13 +66,12 @@ class ServerApplication {
   
             k = dup; 
 		}
-	//System.out.println(build);
+	
 	FileWriter fw = new FileWriter("output.txt", false);
-	//while ((s = br.readLine()) != null) { 
+	
 				fw.write(newS); 
 				fw.flush();
-				//outToServer.writeBytes(s);
-			//}
+				
 			br.close();
 			fw.close();
 			
@@ -118,8 +114,7 @@ class ServerApplication {
 			BufferedReader reader = new BufferedReader(new FileReader("Passwd.txt"));
 			String pass=reader.readLine();
 			reader.close();
-			//System.out.println(pass);
-			//int p=Integer.parseInt(pass);
+			
 			
 			String compass=build.substring(0,4);
 			String timer1=build.substring(5,10);
@@ -130,10 +125,7 @@ class ServerApplication {
 			
 			if(pass.equals(compass))
 			{
-			//JFrame frame1= new JFrame("Confidential");
-			//JOptionPane.showMessageDialog(frame1,build+"\n You Got "+c+" Seconds","Confidential",JOptionPane.INFORMATION_MESSAGE);
-			//Thread.sleep(c);
-			//frame1.dispose();
+			
               
             final JOptionPane optionPane = new JOptionPane(build1+"\n You Got "+timer12+" Seconds", JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
 
@@ -146,16 +138,16 @@ class ServerApplication {
 			dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 			dialog.pack();
 
-			//create timer to dispose of dialog after 5 seconds
+			
 			Timer timer = new Timer(c, new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 			dialog.dispose();
     }
 });
-timer.setRepeats(false);//the timer should only go off once
+timer.setRepeats(false);
 
-//start timer to close JDialog as dialog modal we must start the timer before its visible
+
 timer.start();
 
 dialog.setVisible(true);
